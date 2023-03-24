@@ -44,10 +44,6 @@ const NavBar=()=> {
         setupdatedPriceDate(date.getHours() + ":" + date.getMinutes()+":"+date.getSeconds());
 
       })
-      axios.get('https://api.etherscan.io/api?module=stats&action=ethsupply&apikey='+Ether_APIkey)
-      .then((response)=>{
-        setEtherSupply(response.data.result);
-      })
     }catch(error){
       console.log(error);
     }
@@ -151,8 +147,8 @@ const NavBar=()=> {
         </div>
       </div>
       {/* Ether price and ether supply*/}
-      <div className="grid text-xs sm:text-base justify-items-stretch grid-cols-2 gap-1 sm:gap-2">
-        <div className="bg-purple-500 p-4 flex flex-col text-white  ">
+      <div className="grid text-xs sm:text-base grid-cols-1  sm:grid-cols-3">
+        <div className="bg-purple-500 sm:p-4 p-2 flex flex-col text-white  ">
           <div className="text-sm sm:text-2xl font-bold">💸 PRICE</div>
           <div className="flex flex-wrap flex-row text-black gap-2 p-2">
             <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
@@ -175,12 +171,21 @@ const NavBar=()=> {
               </div>
           </div>
         </div>
-        <div className="bg-purple-500 p-4 flex flex-col text-white   ">
-          <div className="text-sm sm:text-2xl font-bold">💰 TOTAL SUPPLY</div>
-            <div className="p-1 overflow-x-auto">Total Supply (WEI): {EtherSupply}</div>
+        <div className="bg-purple-500 sm:p-4 p-2 flex flex-col text-white   ">
+          <div className="text-sm sm:text-2xl font-bold">💰 ETHER STATS</div>
+            <div className="p-1 overflow-x-auto">Total Supply (WEI): {Ether2.EthSupply}</div>
             <div className="p-1 overflow-x-auto">Eth for stack (WEI): {Ether2.Eth2Staking}</div>
             <div className="p-1 overflow-x-auto">Burnt Fees (WEI): {Ether2.BurntFees}</div>
+        </div>
+        <div className="bg-purple-500 sm:p-4 p-2 pb-4 ">
+          <div className="text-sm sm:text-2xl font-bold text-white pb-1">📃 ERC</div>
+          <div className="flex flex-row gap-2 flex-wrap">
+            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">TXN</div>
+            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 20</div>
+            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 721</div>
+            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 1155</div>
           </div>
+        </div>
       </div>
     </div>
   )
