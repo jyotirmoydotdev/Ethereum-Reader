@@ -1,23 +1,15 @@
-import './App.css';
-import logo from './logo.svg';
-const {ethers}= require ("ethers");
-const {infuraID} = require ("./InfuraID.js");
-function App() {
-  const Infura_ID=infuraID;
-  const provider=new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/"+Infura_ID);
-  const address="0xDA9dfA130Df4dE4673b89022EE50ff26f6EA73Cf";
-  const main =async()=>{
-       const balance=await provider.getBalance(address);
-       return balance;
-  }
-  main();
-  return (
-    <div className="App">
-      {
-        main()
-      }
-    </div>
-  );
-}
+import React from 'react'
+import NavBar from "./Component/NavBar.jsx";
+import Footer from "./Component/Footer.jsx";
 
-export default App;
+const App=({ Component, pageProps })=>(
+    <div className=''>
+    <NavBar/>
+    <div className="">
+      {/*<Component {...pageProps}/>*/}
+    </div>
+    <Footer/>
+    </div>
+);
+
+export default App
