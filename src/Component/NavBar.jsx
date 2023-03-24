@@ -5,50 +5,182 @@ import axios, { Axios } from 'axios';
 
 const NavBar=()=> {
   const [UserAccount, setUserAccount] = useState('');
-  const [Balance, setBalance] = useState('');
+  const [Balance, setBalance] = useState(0);
   const [count, setcount] = useState('');
-  const [openModel, setopenModel] = useState(true);
+  const [openModel, setopenModel] = useState(false);
   const [price, setprice] = useState([]);
   const [EtherSupply, setEtherSupply] = useState([]);
   const [updatedPriceDate, setupdatedPriceDate] = useState('');
-  const varr=1;
+  const [Ether2, setEther2] = useState([]);
+  const Ether_APIkey='6BGBJR95MWV3YKYX2GISBBHN7F3QFHGZ4Z';
 
+  const getEth2=async()=>{
+    try{
+      axios.get('https://api.etherscan.io/api?module=stats&action=ethsupply2&apikey='+Ether_APIkey)
+      .then((response)=>{
+        setEther2(response.data.result);
+      })
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  // Open Model Box
+  const openUserInfo=()=>{
+    if (openModel){
+      setopenModel(false);
+    }else{
+      setopenModel(true);
+    }
+  }
+  // Price and Eth Supply
   const getEtherPrice=async()=>{
     try{
-      const Ether_APIkey='6BGBJR95MWV3YKYX2GISBBHN7F3QFHGZ4Z';
       axios.get('https://api.etherscan.io/api?module=stats&action=ethprice&apikey='+Ether_APIkey)
       .then((response)=>{
         setprice(response.data.result);
         const timestamp= Number(response.data.result.ethusd_timestamp);
         const date= new Date(timestamp);
-        setupdatedPriceDate("UpDate: "+ date.getHours() + ":" + date.getMinutes()+":"+date.getSeconds());
-        console.log(timestamp);
-        console.log(updatedPriceDate);
-        console.log(price);
-        
+        setupdatedPriceDate(date.getHours() + ":" + date.getMinutes()+":"+date.getSeconds());
+
+      })
+      axios.get('https://api.etherscan.io/api?module=stats&action=ethsupply&apikey='+Ether_APIkey)
+      .then((response)=>{
+        setEtherSupply(response.data.result);
       })
     }catch(error){
       console.log(error);
     }
   };
+  const getAccountBalance=async()=>{
+    try {
+
+      axios.get('https://api.etherscan.io/api?module=account&action=balance&address='+UserAccount+'&tag=latest&apikey='+Ether_APIkey)
+      .then((response)=>{
+        console.log('https://api.etherscan.io/api?module=account&action=balance&address='+UserAccount+'&tag=latest&apikey='+Ether_APIkey)
+        setBalance(response.data.result);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Connect Metamask
+  const checkIfAccountExist=async()=>{
+    try {
+      if(!window.ethereum) return console.log("Please install MetaMask");
+      const accounts= await window.ethereum.request({method:"eth_accounts",});
+      if (accounts.length){
+        setUserAccount(accounts[0]);
+      }
+      else{
+        setUserAccount(accounts);
+      }
+    } catch (error) {
+     console.log(error);
+    }
+  };
+
+  // Connect Wallet
+  const connectWallet=async()=>{
+    try {
+      if(!window.ethereum) return alert("Please install MetaMask");
+      const accounts= await window.ethereum.request({method:"eth_requestAccounts",});
+      if (accounts.length){
+        setUserAccount(accounts[0]);
+      }else{
+        console.log("Sorry you dont have account")
+      }
+      window.location.reload();
+    } catch (error) {
+      console.log("something went wrong");
+    }
+  }
+  const disconnectWallet=async()=>{
+    try {
+      setUserAccount('');
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
+    checkIfAccountExist()
     getEtherPrice()
-  }, [])
+    getAccountBalance()
+    getEth2()
+  }, []);
 
   return (
     <div>
-      <div className="">
-        <div className="container flex flex-row">
-          <div className="text-3xl">
+      <div className=" p-3 bg-gray-800 text-white">
+        <div className="container flex flex-row justify-around">
+          <div className="">
             <Link href="/">
-              <h1>Ethereum Reader</h1>
+              <p className=' text-base sm:text-3xl'>🦄 ETHEREM READER</p>
             </Link>
           </div>
           {/*//left*/}
-          <div className="">
-            hey 
+          <div className="relative  text-sm bg-purple-500 sm:p-3 p-1 sm:rounded-xl rounded-md hover:bg-purple-600 ">
+            {UserAccount.length?(
+                <div className="">
+                  <button onClick={()=>openUserInfo()}>
+                    Acc: {UserAccount.slice(0,5)}...{UserAccount.slice(-5,-1)}{UserAccount.slice(-1)}
+                  </button>
+                  <div className="">
+                    {openModel?(
+                      <div className="absolute right-0 text-xs z-10 bg-white shadow-md border text-black p-3 rounded-xl mt-6 ">
+                        <button className='flex flex-col' onClick={()=>openUserInfo()}>
+                          <p  className='block  px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left border-b-2 border-zinc-100 '>Account {UserAccount}</p> 
+                          <p className='block sm:hidden px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left border-b-2 border-zinc-100 '>Account {UserAccount.slice(0,5)}...{UserAccount.slice(-5,-1)}{UserAccount.slice(-1)}</p> 
+                          <p className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left border-b-2 border-zinc-100'>Balance: {Balance} ETH</p>
+                          <p className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left '>Total Transaction:  count ETH</p>
+                          <button onClick={()=>disconnectWallet()} className='bg-red-500 p-2 mt-1 ml-3 text-sm rounded-lg text-white hover:bg-red-400'>DISCONNECT</button>
+                        </button>
+                      </div>
+                    ):("")}
+                  </div>
+                </div>
+              ):(
+                <button onClick={()=>connectWallet()}>
+                  Connect Wallet
+                </button>
+              )
+            } 
           </div>
         </div>
+      </div>
+      {/* Ether price and ether supply*/}
+      <div className="grid text-xs sm:text-base justify-items-stretch grid-cols-2 gap-1 sm:gap-2">
+        <div className="bg-purple-500 p-4 flex flex-col text-white  ">
+          <div className="text-sm sm:text-2xl font-bold">💸 PRICE</div>
+          <div className="flex flex-wrap flex-row text-black gap-2 p-2">
+            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
+              <div className="font-bold">
+                USD
+              </div> 
+              {price.ethusd}
+            </div>
+            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md">
+              <div className="font-bold">
+                BTC 
+              </div>
+              <div className="">
+                {price.ethbtc}
+              </div>
+              </div>
+            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md ">
+              <div className="font-bold">TIME</div>
+              <div className="">{updatedPriceDate}</div>
+              </div>
+          </div>
+        </div>
+        <div className="bg-purple-500 p-4 flex flex-col text-white   ">
+          <div className="text-sm sm:text-2xl font-bold">💰 TOTAL SUPPLY</div>
+            <div className="p-1 overflow-x-auto">Total Supply (WEI): {EtherSupply}</div>
+            <div className="p-1 overflow-x-auto">Eth for stack (WEI): {Ether2.Eth2Staking}</div>
+            <div className="p-1 overflow-x-auto">Burnt Fees (WEI): {Ether2.BurntFees}</div>
+          </div>
       </div>
     </div>
   )
