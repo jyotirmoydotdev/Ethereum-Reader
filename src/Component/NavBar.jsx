@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext}from 'react';
 import Link from 'next/link';
 import axios, { Axios } from 'axios';
 
-
 const NavBar=()=> {
   const [UserAccount, setUserAccount] = useState('');
   const [Balance, setBalance] = useState(0);
@@ -12,7 +11,8 @@ const NavBar=()=> {
   const [EtherSupply, setEtherSupply] = useState([]);
   const [updatedPriceDate, setupdatedPriceDate] = useState('');
   const [Ether2, setEther2] = useState([]);
-  const Ether_APIkey='6BGBJR95MWV3YKYX2GISBBHN7F3QFHGZ4Z';
+  const Ether_APIkey=process.env.REACT_APP_ETHER_API_KEY;
+  //console.log(process.env.REACT_APP_ETHER_API_KEY)
 
   const getEth2=async()=>{
     try{
