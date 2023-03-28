@@ -19,24 +19,33 @@ export const EtherProvider=({children})=>{
         try {
             const getCurrentBlock= await provider.getBlockNumber();
             setcurrentBlock(getCurrentBlock);
+
             const blockTransaction=await provider.getBlock(getCurrentBlock);
             settransaction(blockTransaction.transactions);
-            const previousBlock=getCurrentBlock -5;
+
+            const previousBlock= await getCurrentBlock -5;
+
             const listTenBlock=[];
+
             for(let i=getCurrentBlock;i>previousBlock;i--){
                 listTenBlock.push([i]);
             }
+            
+
             const getBlockDetails=listTenBlock.flat();
             settopTenBlock(getBlockDetails);
+
+            // Here is the problem
             getBlockDetails.map(async(el)=>{
                 const singleBlockData=await provider.getBlock(el);
                 tenBlockWithDetails.push(singleBlockData);
-                console.log(singleBlockData);
-            })
+                //console.log(singleBlockData)
+            });
+
             const getgasPrice= await provider.getGasPrice();
             const gasPrice= ethers.utils.formatEther(getgasPrice);
             setgasPrice(gasPrice);
-            console.log(gasPrice);
+            console.log(currentBlock)
         } catch (error) {
             console.log(error);
         }

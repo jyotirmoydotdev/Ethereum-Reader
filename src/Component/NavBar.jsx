@@ -110,10 +110,10 @@ const NavBar=()=> {
   return (
     <div>
       <div className=" p-3 bg-gray-800 text-white">
-        <div className="container flex flex-row justify-around">
+        <div className="container flex flex-row items-center justify-around">
           <div className="">
             <Link href="/">
-              <p className=' text-base sm:text-3xl'>🦄 ETHEREM READER</p>
+              <p className=' text-xl sm:text-3xl'>🦄 ETHEREM READER</p>
             </Link>
           </div>
           {/*//left*/}
@@ -147,9 +147,9 @@ const NavBar=()=> {
         </div>
       </div>
       {/* Ether price and ether supply*/}
-      <div className="grid text-xs sm:text-base grid-cols-1  sm:grid-cols-3">
+      <div className="grid text-sm sm:text-base grid-cols-1  sm:grid-cols-3">
         <div className="bg-purple-500 sm:p-4 p-2 flex flex-col text-white  ">
-          <div className="text-sm sm:text-2xl font-bold">💸 PRICE</div>
+          <div className="text-lg sm:text-2xl font-bold">💸 PRICE</div>
           <div className="flex flex-wrap flex-row text-black gap-2 p-2">
             <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
               <div className="font-bold">
@@ -165,20 +165,15 @@ const NavBar=()=> {
                 {price.ethbtc}
               </div>
               </div>
-            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md ">
-              <div className="font-bold">TIME</div>
-              <div className="">{updatedPriceDate}</div>
-              </div>
           </div>
         </div>
         <div className="bg-purple-500 sm:p-4 p-2 flex flex-col text-white   ">
-          <div className="text-sm sm:text-2xl font-bold">💰 ETHER STATS</div>
-            <div className="p-1 overflow-x-auto">Total Supply (WEI): {Ether2.EthSupply}</div>
+          <div className="text-lg sm:text-2xl font-bold">💰 ETHER STATS</div>
+            <div className="p-1 flex flex-row ">Total Supply (WEI): <div className=" overflow-x-auto">{Ether2.EthSupply}</div></div>
             <div className="p-1 overflow-x-auto">Eth for stack (WEI): {Ether2.Eth2Staking}</div>
-            <div className="p-1 overflow-x-auto">Burnt Fees (WEI): {Ether2.BurntFees}</div>
         </div>
         <div className="bg-purple-500 sm:p-4 p-2 pb-4 ">
-          <div className="text-sm sm:text-2xl font-bold text-white pb-1">📃 ERC</div>
+          <div className="text-lg sm:text-2xl font-bold text-white pb-1">📃 ERC</div>
           <div className="flex flex-row gap-2 flex-wrap">
             <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">TXN</div>
             <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 20</div>

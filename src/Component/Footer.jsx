@@ -3,11 +3,11 @@ import React from 'react'
 function footer() {
   return (
     <div>
-      <div className="grid grid-col-1 w-full font-mono text-sm font-thin sm:text-base bottom-0 shadow-sm ">
+      <div className="grid grid-col-1 w-full text-sm font-thin sm:text-base bottom-0 shadow-sm ">
         <div className="flex flex-col p-2 py-5 overflow-auto sm:p-30 justify-center">
           <div className="flex justify-center flex-row gap-5  p-1 flex-wrap sm:p-2 uppercase">
             <div className="">
-              <a href="http://jyotirmoy.dev/about-me" target="_blank" rel="noopener noreferrer">About</a>
+              <a href="http://jyotirmoy.dev/about-me" target="_blank" rel="noopener noreferrer">about</a>
             </div>
             <div className="">
               <a href="https://github.com/jyotirmoydotdev/Ethereum-Reader" target="_blank" rel="noopener noreferrer">Source-Code</a>
