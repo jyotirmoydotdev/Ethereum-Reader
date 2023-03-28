@@ -1,15 +1,29 @@
+// eslint-disable-next-line 
+import {Etherscan} from "./Context/Ethers";
 import React,{useState, useContext, useEffect} from 'react'
+import ReactDOM from "react-dom";
 import Link from 'next/link'; 
-import {Etherscan} from "./Context/Ethers"
-const Home=()=>{
-    const { data, 
-      currentBlock, 
-      topTenBlock, 
-      yourBlockTxn, 
-      transaction, 
-      gasPrice, 
-      provider,} = useContext(Etherscan);
-    const [userAccount, setuserAccount] = useState('');
+const Home = () => {
+  const { data, 
+    currentBlock, 
+    topTenBlock, 
+    yourBlockTxn, 
+    transaction, 
+    gasPrice,
+    provider,
+  } = useContext(Etherscan);
+  const [userAccount, setuserAccount] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(yourBlockTxn.length);
+  useEffect(() => {
+    if (data && currentBlock && topTenBlock &&  yourBlockTxn && transaction && gasPrice && provider) {
+      setIsLoading(false);
+    }
+  }, [data, currentBlock, topTenBlock, yourBlockTxn, transaction, gasPrice, provider]);
+  const handleAccountSubmit = (event) => {
+    event.preventDefault();
+    console.log("userAccount", userAccount);
+  };
     return (
       <div className="">
         <div className=" w-full">
@@ -19,12 +33,13 @@ const Home=()=>{
               Submit
             </Link>
           </form>
-        </div>
+        </div> 
+        {!isLoading ? (
         <div className="grid  grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "36rem"}}>
           <div className=" white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <h3 className="text-2xl uppercase flex flex-row  shadow-sm text-purple-400 p-2 rounded-md font-bold">Latest Block</h3>
+            <h3 className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
             <div className="overflow-auto flex flex-col gap-3">
-            {yourBlockTxn.map((el,i)=>(
+          {yourBlockTxn.map((el,i)=>(
               <div className="bg-white rounded-md p-2 shadow-sm" key={i+1}>
                 <div className="">
                   <div className="flex flex-row gap-1">
@@ -35,12 +50,12 @@ const Home=()=>{
                 </div>
                 <div className="">
                   <div className="Miner">
-                    <p className="flex flex-row gap-1">
-                      <span>Miner:</span>
+                    <div className="flex flex-row gap-1">
+                      <p>Miner: </p>
                         <div className="overflow-auto text-blue-400 hover:text-blue-500">
                         {el.miner.slice(0,8)}...{el.miner.slice(-8,-1)}{el.miner.slice(-1)}
                         </div>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -48,23 +63,38 @@ const Home=()=>{
             </div>
           </div>
           <div className="white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <div className="text-2xl uppercase flex flex-row  shadow-sm text-purple-400 p-2 rounded-md font-bold">Latest Transaction</div>
+            <div className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Transaction</div>
             <div className="overflow-auto flex flex-col gap-3">
               {transaction.map((el,i)=>(
                 <div className="bg-white rounded-md p-2 shadow-sm flex flex-row gap-2" key={i+1}>
-                  <div className="">Tnx Hash</div>
+                  <div className="">TXN Hash</div>
                   <div className="text-blue-400 hover:text-blue-600">
                     <Link href={{}}>
-                  {el.slice(0,10)}....{el.slice(-10,-1)}{el.slice(-1)}
+                  {el.slice(0,10)}...{el.slice(-10,-1)}{el.slice(-1)}
                   </Link>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>):(
+          <div className="grid  grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "36rem"}}>
+          <div className=" white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+            <h3 className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
+            <div className="overflow-auto flex flex-col gap-3">
+              Loading...
+            </div>
+          </div>
+          <div className="white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+            <div className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Transaction</div>
+            <div className="overflow-auto flex flex-col gap-3">
+              Loading...
+            </div>
+          </div>
         </div>
+        )}
       </div>
-      );
+    );
 };
 
 export default Home;

@@ -23,7 +23,7 @@ export const EtherProvider=({children})=>{
             const blockTransaction=await provider.getBlock(getCurrentBlock);
             settransaction(blockTransaction.transactions);
 
-            const previousBlock= await getCurrentBlock -5;
+            const previousBlock= getCurrentBlock -5;
 
             const listTenBlock=[];
 
@@ -31,25 +31,64 @@ export const EtherProvider=({children})=>{
                 listTenBlock.push([i]);
             }
             
-
             const getBlockDetails=listTenBlock.flat();
             settopTenBlock(getBlockDetails);
 
-            // Here is the problem
-            getBlockDetails.map(async(el)=>{
-                const singleBlockData=await provider.getBlock(el);
-                tenBlockWithDetails.push(singleBlockData);
-                //console.log(singleBlockData)
+            const temp=[];
+
+            // getBlockDetails.map(async(el)=>{
+            //     const singleBlockData=await provider.getBlock(el);
+            //     temp.push(singleBlockData);
+            //     //console.log(singleBlockData
+            // });
+
+            // Promise.all(blockNumbers.map(fetchBlockDetails))
+            // .then((blocks) => {
+            //   // Insert the fetched block details into the blockDetails array
+            //   blockDetails.push(...blocks);
+            //   console.log('All block details:', blockDetails);
+            // })
+            // .catch((error) => {
+            //   console.error(error);
+            // });
+
+            async function fetchBlockDetails(blockNumber) {
+                try {
+                  const block = await provider.getBlock(blockNumber);
+                  return block;
+                } catch (error) {
+                  console.error(error);
+                }
+            }
+
+            Promise.all(getBlockDetails.map(fetchBlockDetails))
+              .then((blocks) => { 
+                temp.push(...blocks);
+              })
+              .catch((error) => {
+                console.error(error);
             });
+
+            if (temp){
+                setyourBlockTxn(temp);
+            }
 
             const getgasPrice= await provider.getGasPrice();
             const gasPrice= ethers.utils.formatEther(getgasPrice);
             setgasPrice(gasPrice);
-            console.log(currentBlock)
         } catch (error) {
             console.log(error);
         }
     }
+    const fetchData = async () => {
+        try {
+          const currentBlock = await provider.getBlockNumber();
+          const blockTransaction = await provider.getBlock(currentBlock);
+          settransaction(blockTransaction.transactions);
+        } catch (error) {
+          console.log(error);
+        }
+      };
     useEffect(() => {
         accountDetails();
     }, []);
@@ -60,8 +99,9 @@ export const EtherProvider=({children})=>{
             topTenBlock, 
             yourBlockTxn, 
             transaction, 
-            gasPrice, 
+            gasPrice,
             provider,
+            fetchData,
         }}>
             {children}
         </Etherscan.Provider>
