@@ -14,16 +14,37 @@ export const EtherProvider=({children})=>{
     const [topTenBlock, settopTenBlock] = useState([]);
     const [transaction, settransaction] = useState([]);
     const [gasPrice, setgasPrice] = useState('');
+    const [TnxDetails, setTnxDetails] = useState([]);
 
     const accountDetails=async()=>{
         try {
             const getCurrentBlock= await provider.getBlockNumber();
             setcurrentBlock(getCurrentBlock);
 
-            const blockTransaction=await provider.getBlock(getCurrentBlock);
-            settransaction(blockTransaction.transactions);
 
-            const previousBlock= getCurrentBlock -5;
+
+            const blockTransaction=await provider.getBlock(getCurrentBlock);
+
+            const TransTemp=[];
+            for(let i=0;i<20;i++){
+                TransTemp.push(blockTransaction.transactions[i]);
+            }
+            settransaction(TransTemp);
+
+            // Add Trsnsaction Details
+            const TransTempDetails=[];
+            const FetchTrans=async(TnxHash)=>{
+                const tx= provider.getTransaction(TnxHash);
+                return tx;
+            }
+            TransTemp.map(async(el)=>{
+                const SingleTnx=await FetchTrans(el);
+                TransTempDetails.push(SingleTnx);
+            })
+            setTnxDetails(TransTempDetails)
+            console.log(TransTempDetails);
+
+            const previousBlock= getCurrentBlock -10;
 
             const listTenBlock=[];
 
@@ -39,18 +60,8 @@ export const EtherProvider=({children})=>{
             // getBlockDetails.map(async(el)=>{
             //     const singleBlockData=await provider.getBlock(el);
             //     temp.push(singleBlockData);
-            //     //console.log(singleBlockData
             // });
-
-            // Promise.all(blockNumbers.map(fetchBlockDetails))
-            // .then((blocks) => {
-            //   // Insert the fetched block details into the blockDetails array
-            //   blockDetails.push(...blocks);
-            //   console.log('All block details:', blockDetails);
-            // })
-            // .catch((error) => {
-            //   console.error(error);
-            // });
+            // setyourBlockTxn(temp)
 
             async function fetchBlockDetails(blockNumber) {
                 try {
@@ -72,6 +83,7 @@ export const EtherProvider=({children})=>{
             if (temp){
                 setyourBlockTxn(temp);
             }
+            console.log(temp);
 
             const getgasPrice= await provider.getGasPrice();
             const gasPrice= ethers.utils.formatEther(getgasPrice);
@@ -80,15 +92,6 @@ export const EtherProvider=({children})=>{
             console.log(error);
         }
     }
-    const fetchData = async () => {
-        try {
-          const currentBlock = await provider.getBlockNumber();
-          const blockTransaction = await provider.getBlock(currentBlock);
-          settransaction(blockTransaction.transactions);
-        } catch (error) {
-          console.log(error);
-        }
-      };
     useEffect(() => {
         accountDetails();
     }, []);
@@ -101,7 +104,7 @@ export const EtherProvider=({children})=>{
             transaction, 
             gasPrice,
             provider,
-            fetchData,
+            TnxDetails
         }}>
             {children}
         </Etherscan.Provider>
