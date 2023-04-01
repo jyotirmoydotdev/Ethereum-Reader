@@ -39,9 +39,9 @@ const Home = () => {
     return(
       <div className="">        
         {!isLoading ? (
-        <div className="grid dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
+        <div className="grid  dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
           <div className=" white border  border-gray-300  dark:border-gray-600 dark:shadow-sm dark:shadow-slate-500 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <h3 className="text-2xl uppercase flex flex-row justify-between items-center shadow-sm text-blue-400 p-2 rounded-md font-bold">
+            <h3 className="text-xl sm:text-2xl uppercase flex flex-row justify-between items-center shadow-sm text-blue-400 p-2 rounded-md font-bold">
               <Link to='/'>
               Latest Block
               </Link>
@@ -50,7 +50,6 @@ const Home = () => {
               </Link>
 
             </h3>
-
             <div className="overflow-auto scrollbar-hide flex flex-col text-sm gap-3">
             {yourBlockTxn.map((el,i)=>(
               <Link to='/block'>
@@ -95,10 +94,11 @@ const Home = () => {
               </div>
               </Link>
             ))}
+            <div className="p-2 w-full text-center dark:bg-gray-700 dark:text-white font-bold dark:hover:bg-gray-600 rounded-md bg-gray-100">More</div>
             </div>
           </div>
         <div className="border  border-gray-300 dark:border-gray-600 dark:shadow-sm dark:shadow-slate-500 flex flex-col text-sm overflow-y-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <div className="text-2xl uppercase flex flex-row  shadow-sm  justify-between items-center text-blue-400 p-2 rounded-md font-bold">
+            <div className="text-xl sm:text-2xl uppercase flex flex-row  shadow-sm  justify-between items-center text-blue-400 p-2 rounded-md font-bold">
               <Link to='/'>
               Latest Transaction
               </Link>
@@ -145,13 +145,14 @@ const Home = () => {
                   </div>
                 </div>
               ))}
+              <div className="p-2 w-full text-center dark:bg-gray-700 dark:text-white font-bold dark:hover:bg-gray-600 rounded-md bg-gray-100">More</div>
             </div>
         </div>
       </div>):
       (
-          <div className="grid  grid-cols-1  dark:bg-gray-700 sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
-          <div className=" white border dark:border-gray-500 border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <h3 className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
+          <div className="grid dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
+          <div className=" border dark:border-gray-500 border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+            <h3 className="text-xl sm:text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
             <div className="overflow-auto grid justify-items-center grid-cols-1 h-full items-center gap-3">
               <span className="relative flex justify-center h-12 w-12">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
@@ -159,8 +160,8 @@ const Home = () => {
               </span>
             </div>
           </div>
-          <div className="white border dark:border-none border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
-            <div className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Transaction</div>
+          <div className="border dark:border-gray-500 border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+            <div className="text-xl sm:text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Transaction</div>
             <div className="overflow-auto grid justify-items-center grid-cols-1 h-full items-center gap-3">
             <span className="relative flex justify-center h-12 w-12">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>

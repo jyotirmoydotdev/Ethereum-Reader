@@ -21,7 +21,7 @@ return(
   <>
   <BrowserRouter>
   <EtherProvider>
-    <div>
+    <div className='h-screen dark:bg-gray-700'>
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>} />

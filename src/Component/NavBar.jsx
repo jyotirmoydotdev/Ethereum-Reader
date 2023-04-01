@@ -124,14 +124,21 @@ const NavBar=()=> {
         <div className=" flex flex-row  w-full items-center justify-around">
           <div className="">
             <Link to="/">
-              <p className='flex flex-row gap-1 items-center text-xl sm:text-3xl'> <div className="bg-white shadow-md p-1 rounded-lg">🐬</div>  <div className="">ETHEREM READER</div> </p>
+              <p className='flex flex-row gap-1 items-center text-xl sm:text-3xl'> 
+                <div className=" shadow-md dark:bg-blue-900 p-1 px-2 rounded-3xl bg-white ">
+                  🐬
+                </div>  
+                <div className="">
+                  ETHEREM READER
+                </div> 
+              </p>
             </Link>
           </div>
 
           {/*//left*/}
           <div className="flex flex-row items-center gap-3">
           <Switcher/>
-          <div className="relative  text-sm bg-white dark:bg-gray-700 text-gray-600 dark:text-white sm:p-3 p-1 sm:rounded-xl rounded-md hover:bg-gray-200 shadow-md hover:text-white  ">
+          <div className="relative  text-sm bg-white dark:bg-gray-700 text-gray-600 dark:text-white sm:p-3 p-1 sm:rounded-xl rounded-md hover:bg-slate-100 dark:hover:bg-gray-600 shadow-md   ">
             {UserAccount.length?(
                 <div className="">
                   <button onClick={()=>openUserInfo()}>
@@ -162,13 +169,13 @@ const NavBar=()=> {
         </div>
       </div>
       {/* Ether price and ether supply*/}
-      <div className="grid p-2 pb-0 sm:pb-2 bg-white dark:bg-slate-700 text-sm sm:text-base grid-cols-1  sm:grid-cols-2 lg:grid-cols-3">
-        <div className="  sm:p-2 p-1 flex flex-col text-white  ">
-          <div className="grid bg-blue-500  dark:bg-blue-600 p-1 text-sm sm:text-base grid-rows-1 h-full rounded-md justify-start   ">
+      <div className="grid justify-items-stretch p-2 pb-0 sm:pb-2   grid-cols-1  sm:grid-cols-2 lg:grid-cols-3">
+        <div className="  sm:p-2 p-1  text-white  ">
+          <div className="grid bg-blue-500  dark:bg-blue-600 p-1 w-full text-sm sm:text-base grid-rows-1 h-full rounded-md justify-start   ">
             <div className="">
             <div className="text-md sm:text-2xl font-bold px-2 "> PRICE</div>
-            <div className="flex flex-wrap flex-row text-black gap-2 p-2">
-              <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
+            <div className="flex flex-wrap flex-row text-black gap-2 p-1 sm:p-2">
+              <div className="p-1 sm:p-2 bg-white text-xs sm:text-sm rounded-md flex flex-row gap-1 shadow-md"> 
                 <div className="font-bold">
                   USD
                 </div>
@@ -176,7 +183,7 @@ const NavBar=()=> {
                   {price.ethusd}
                 </div>
               </div>
-              <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md">
+              <div className="p-1 sm:p-2 text-xs sm:text-sm bg-white rounded-md flex flex-row gap-1 shadow-md">
                 <div className="font-bold">
                   BTC 
                 </div>
@@ -189,14 +196,14 @@ const NavBar=()=> {
           </div>
         </div>
         <div className=" sm:p-2 p-1  flex flex-col text-white  ">
-            <div className="bg-blue-500  dark:bg-blue-600 p-1 rounded-md ">
-            <div className="text-lg sm:text-2xl font-bold px-2 ">ETHER Stats</div>
-            <div className="p-1 px-2  overflow-x-auto">Total Supply: {ConvertToEther(EtherSupply)} ETH</div>
-            <div className="p-1 px-2 overflow-x-auto">ETH For Stack: {ConvertToEther(Eth2Stack)} ETH</div>
+            <div className="bg-blue-500  dark:bg-blue-600 p-1 h-full rounded-md ">
+            <div className="text-sm sm:text-2xl font-bold px-2 ">ETHER Stats</div>
+            <div className="p-1 px-2 text-xs sm:text-sm overflow-x-auto">Total Supply: {ConvertToEther(EtherSupply)} ETH</div>
+            <div className="p-1 px-2 text-xs sm:text-sm overflow-x-auto">ETH For Stack: {ConvertToEther(Eth2Stack)} ETH</div>
             </div>
         </div>
-        <div className="sm:p-2 p-1">
-        <NavBar2/>
+        <div className="sm:p-2 p-1 grid grid-cols-1 sm:col-span-2 lg:col-span-1 items-center">
+          <NavBar2/>
         </div>
       </div>
     </div>
