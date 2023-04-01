@@ -12,16 +12,17 @@ import {
   useNavigate,
   useNavigation,
 } from "react-router-dom";
-import Start from './Component/Start.jsx';
+import NavBar2 from './Component/NavBar2.jsx';
+import Switcher from './Switch.js';
 
 const App = () => {
+  const dark="className='dark'";
 return(
   <>
   <BrowserRouter>
   <EtherProvider>
-    <div className=''>
+    <div>
       <NavBar/>
-      <Search/>
       <Routes>
         <Route path="/" element={<Home/>} />
       </Routes>

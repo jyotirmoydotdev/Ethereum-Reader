@@ -2,6 +2,8 @@ import React, {useState, useEffect, useContext}from 'react';
 import { Link } from 'react-router-dom';
 import axios, { Axios } from 'axios';
 import { ethers } from 'ethers';
+import Switcher from '../Switch';
+import NavBar2 from './NavBar2';
 
 const NavBar=()=> {
   const [UserAccount, setUserAccount] = useState('');
@@ -117,16 +119,19 @@ const NavBar=()=> {
   }, []); 
 
   return (
-    <div>
-      <div className=" p-3 bg-gray-800 text-white">
-        <div className="container flex flex-row items-center justify-around">
+    <div > 
+      <div className=" p-3 dark:bg-blue-600 bg-blue-500 grid grid-cols-1  w-full text-white">
+        <div className=" flex flex-row  w-full items-center justify-around">
           <div className="">
             <Link to="/">
-              <p className=' text-xl sm:text-3xl'>🐬 ETHEREM READER</p>
+              <p className='flex flex-row gap-1 items-center text-xl sm:text-3xl'> <div className="bg-white shadow-md p-1 rounded-lg">🐬</div>  <div className="">ETHEREM READER</div> </p>
             </Link>
           </div>
+
           {/*//left*/}
-          <div className="relative  text-sm bg-blue-500 sm:p-3 p-1 sm:rounded-xl rounded-md hover:bg-blue-600 ">
+          <div className="flex flex-row items-center gap-3">
+          <Switcher/>
+          <div className="relative  text-sm bg-white dark:bg-gray-700 text-gray-600 dark:text-white sm:p-3 p-1 sm:rounded-xl rounded-md hover:bg-gray-200 shadow-md hover:text-white  ">
             {UserAccount.length?(
                 <div className="">
                   <button onClick={()=>openUserInfo()}>
@@ -153,44 +158,45 @@ const NavBar=()=> {
               )
             } 
           </div>
+          </div>
         </div>
       </div>
       {/* Ether price and ether supply*/}
-      <div className="grid text-sm sm:text-base grid-cols-1  sm:grid-cols-3">
-        <div className="bg-blue-500 sm:p-4 p-2 flex flex-col text-white  ">
-          <div className="text-lg sm:text-2xl font-bold px-2"> PRICE</div>
-          <div className="flex flex-wrap flex-row text-black gap-2 p-2">
-            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
-              <div className="font-bold">
-                USD
+      <div className="grid p-2 pb-0 sm:pb-2 bg-white dark:bg-slate-700 text-sm sm:text-base grid-cols-1  sm:grid-cols-2 lg:grid-cols-3">
+        <div className="  sm:p-2 p-1 flex flex-col text-white  ">
+          <div className="grid bg-blue-500  dark:bg-blue-600 p-1 text-sm sm:text-base grid-rows-1 h-full rounded-md justify-start   ">
+            <div className="">
+            <div className="text-md sm:text-2xl font-bold px-2 "> PRICE</div>
+            <div className="flex flex-wrap flex-row text-black gap-2 p-2">
+              <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md"> 
+                <div className="font-bold">
+                  USD
+                </div>
+                <div className="">
+                  {price.ethusd}
+                </div>
               </div>
-              <div className="">
-                {price.ethusd}
-              </div>
+              <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md">
+                <div className="font-bold">
+                  BTC 
+                </div>
+                <div className="">
+                  {price.ethbtc}
+                </div>
+                </div>
             </div>
-            <div className="p-2 bg-white rounded-md flex flex-row gap-1 shadow-md">
-              <div className="font-bold">
-                BTC 
-              </div>
-              <div className="">
-                {price.ethbtc}
-              </div>
-              </div>
+            </div>
           </div>
         </div>
-        <div className="bg-blue-500 sm:p-4 p-2 flex flex-col text-white   ">
-          <div className="text-lg sm:text-2xl font-bold px-2">ETHER Stats</div>
-            <div className="p-1 overflow-x-auto">Total Supply: {ConvertToEther(EtherSupply)} ETH</div>
-            <div className="p-1 overflow-x-auto">ETH For Stack: {ConvertToEther(Eth2Stack)} ETH</div>
+        <div className=" sm:p-2 p-1  flex flex-col text-white  ">
+            <div className="bg-blue-500  dark:bg-blue-600 p-1 rounded-md ">
+            <div className="text-lg sm:text-2xl font-bold px-2 ">ETHER Stats</div>
+            <div className="p-1 px-2  overflow-x-auto">Total Supply: {ConvertToEther(EtherSupply)} ETH</div>
+            <div className="p-1 px-2 overflow-x-auto">ETH For Stack: {ConvertToEther(Eth2Stack)} ETH</div>
+            </div>
         </div>
-        <div className="bg-blue-500 sm:p-4 p-2 pb-4 ">
-          <div className="text-lg sm:text-2xl font-bold text-white pb-1 px-2">ERC Tokens</div>
-          <div className="flex flex-row gap-2 flex-wrap">
-            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">TXN</div>
-            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 20</div>
-            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 721</div>
-            <div className="p-2 bg-white rounded-md shadow-md font-bold px-3 hover:bg-slate-800 hover:text-white">ERC 1155</div>
-          </div>
+        <div className="sm:p-2 p-1">
+        <NavBar2/>
         </div>
       </div>
     </div>

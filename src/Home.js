@@ -5,6 +5,8 @@ import { ethers } from "ethers";
 import ReactDOM from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
 import { formatUnits } from "ethers/lib/utils";
+import NavBar2 from "./Component/NavBar2";
+import Search from "./Component/Search";
 
 const Home = () => {
   let navigate = useNavigate();
@@ -35,10 +37,10 @@ const Home = () => {
     }
   }, [topTenBlock, yourBlockTxn, transaction, gasPrice, TnxDetails]);
     return(
-      <div className="">
+      <div className="">        
         {!isLoading ? (
-        <div className="grid  grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
-          <div className=" white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+        <div className="grid dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
+          <div className=" white border  border-gray-300  dark:border-gray-600 dark:shadow-sm dark:shadow-slate-500 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <h3 className="text-2xl uppercase flex flex-row justify-between items-center shadow-sm text-blue-400 p-2 rounded-md font-bold">
               <Link to='/'>
               Latest Block
@@ -49,10 +51,10 @@ const Home = () => {
 
             </h3>
 
-            <div className="overflow-auto flex flex-col text-sm gap-3">
+            <div className="overflow-auto scrollbar-hide flex flex-col text-sm gap-3">
             {yourBlockTxn.map((el,i)=>(
               <Link to='/block'>
-              <div className="bg-white hover:bg-slate-100 rounded-md p-2 grid lg:grid-cols-3 sm:grid-cols-2 shadow-sm" key={i+1}>
+              <div className="bg-white dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 hover:bg-slate-100 rounded-md p-2 grid lg:grid-cols-3 sm:grid-cols-2 shadow-sm" key={i+1}>
                 <div className="grid grid-cols-2 sm:grid-cols-1 gap-1 ">
                   <div className="flex flex-row  gap-1">
                     <p className="font-bold">Block</p>
@@ -95,7 +97,7 @@ const Home = () => {
             ))}
             </div>
           </div>
-        <div className="white border border-gray-300 flex flex-col text-sm overflow-y-auto rounded-xl gap-2 p-3 m-2 mt-0">
+        <div className="border  border-gray-300 dark:border-gray-600 dark:shadow-sm dark:shadow-slate-500 flex flex-col text-sm overflow-y-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <div className="text-2xl uppercase flex flex-row  shadow-sm  justify-between items-center text-blue-400 p-2 rounded-md font-bold">
               <Link to='/'>
               Latest Transaction
@@ -104,9 +106,9 @@ const Home = () => {
               Reload
               </Link>
               </div>
-            <div className="overflow-auto flex flex-col gap-3">
+            <div className="overflow-auto scrollbar-hide flex flex-col gap-3">
               {TnxDetails.map((el,i)=>(
-                <div className="bg-white items-center hover:bg-slate-100   p-2 shadow-sm grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2" key={i+1}>
+                <div className="bg-white dark:bg-gray-700 dark:text-white  items-center hover:bg-slate-100 rounded-md dark:hover:bg-gray-600 p-2 shadow-sm grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2" key={i+1}>
                   <div className="flex flex-col ">
                     <div className="flex flex-row gap-1 p-1 pl-0">TXN Hash <div className="text-blue-400 hover:text-blue-500">{el.blockNumber}</div></div>
                     <div className="text-blue-400 hover:text-blue-600">
@@ -147,8 +149,8 @@ const Home = () => {
         </div>
       </div>):
       (
-          <div className="grid  grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
-          <div className=" white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+          <div className="grid  grid-cols-1  dark:bg-gray-700 sm:grid-cols-2 gap-3 p-1 " style={{height: "40rem"}}>
+          <div className=" white border dark:border-gray-500 border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <h3 className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
             <div className="overflow-auto grid justify-items-center grid-cols-1 h-full items-center gap-3">
               <span className="relative flex justify-center h-12 w-12">
@@ -157,7 +159,7 @@ const Home = () => {
               </span>
             </div>
           </div>
-          <div className="white border border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
+          <div className="white border dark:border-none border-gray-300 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <div className="text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Transaction</div>
             <div className="overflow-auto grid justify-items-center grid-cols-1 h-full items-center gap-3">
             <span className="relative flex justify-center h-12 w-12">
