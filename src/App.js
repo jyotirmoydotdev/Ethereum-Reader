@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import NavBar2 from './Component/NavBar2.jsx';
 import Switcher from './Switch.js';
+import ERC from './Component/ERC.jsx';
 
 const App = () => {
   const dark="className='dark'";
@@ -21,10 +22,11 @@ return(
   <>
   <BrowserRouter>
   <EtherProvider>
-    <div className='h-screen dark:bg-gray-700'>
+    <div className='h-screen bg-gray-100 dark:bg-gray-700'>
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="ERC/*" element={<ERC/>} />
       </Routes>
       <Footer/>
     </div>

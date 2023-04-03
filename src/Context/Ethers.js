@@ -30,19 +30,22 @@ export const EtherProvider=({children})=>{
                 TransTemp.push(blockTransaction.transactions[i]);
             }
             settransaction(TransTemp);
+            
 
             // Add Trsnsaction Details
             const TransTempDetails=[];
             const FetchTrans=async(TnxHash)=>{
-                const tx= provider.getTransaction(TnxHash);
+                const tx=await provider.getTransaction(TnxHash);
+                console.log(tx);
                 return tx;
+
             }
             TransTemp.map(async(el)=>{
                 const SingleTnx=await FetchTrans(el);
                 TransTempDetails.push(SingleTnx);
             })
             setTnxDetails(TransTempDetails)
-            console.log(TransTempDetails);
+            
 
             const previousBlock= getCurrentBlock -10;
 
