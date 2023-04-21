@@ -163,7 +163,7 @@ const Home = () => {
           </div>
         </div>):
       (
-          <div className="grid dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "45rem"}}>
+          <div className="grid bg-gray-100 dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "45rem"}}>
           <div className=" shadow-sm bg-white dark:bg-gray-800 dark:shadow-gray-500 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <h3 className="text-xl sm:text-2xl uppercase flex flex-row  shadow-sm text-blue-400 p-2 rounded-md font-bold">Latest Block</h3>
             <div className="overflow-auto grid justify-items-center grid-cols-1 h-full items-center gap-3">

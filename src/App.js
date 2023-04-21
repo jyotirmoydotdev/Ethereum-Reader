@@ -15,6 +15,7 @@ import {
 import NavBar2 from './Component/NavBar2.jsx';
 import Switcher from './Switch.js';
 import ERC from './Component/ERC.jsx';
+import DAO from './Component/DAO.jsx';
 
 const App = () => {
   const dark="className='dark'";
@@ -27,6 +28,7 @@ return(
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="ERC/*" element={<ERC/>} />
+        <Route path="dao/*" element={<DAO/>} />
       </Routes>
       <Footer/>
     </div>
