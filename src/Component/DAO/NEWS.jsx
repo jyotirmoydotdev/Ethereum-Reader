@@ -46,11 +46,11 @@ function News() {
 
   return (
     <div>
-    <div className="grid dark:text-white xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 overflow-auto gap-1"style={{height: "45rem"}}>
+    <div className="scrollbar-hide pt-2 grid dark:text-white xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 overflow-auto gap-1"style={{height: "45rem"}}>
         {articles.map((el, i) => (
           <a href={el.link} target='_blank' className="shadow-sm border border-1 dark:border-gray-600 bg-white  hover:bg-gray-200 dark:hover:bg-gray-700 dark:bg-gray-800  dark:shadow-gray-500   rounded-xl gap-2 p-3 m-2 mt-0 flex flex-col justify-around "key={i + 1}>
             <div className="">
-              <img className="lazy w-full" data-src={el.enclosure.link} alt={el.title} />
+              <img className="lazy w-full rounded-md" data-src={el.enclosure.link} alt={el.title} />
             </div>
             <div className="flex flex-col">
               <div className="p-1 font-bold">

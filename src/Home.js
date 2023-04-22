@@ -39,7 +39,7 @@ const Home = () => {
     return(
       <div className="">        
         {!isLoading ? (
-        <div className="grid bg-gray-100 dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "45rem"}}>
+        <div className="scrollbar-hide grid bg-gray-100 dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "45rem"}}>
           <div className=" bg-white dark:bg-gray-800 shadow-md  dark:shadow-slate-500 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">
             <h3 className="text-xl sm:text-2xl uppercase flex flex-row justify-between items-center shadow-sm text-blue-400 p-2 rounded-md font-bold">
               <Link to='/'>
