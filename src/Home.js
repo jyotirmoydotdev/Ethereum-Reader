@@ -7,6 +7,7 @@ import { Link,useLocation, useNavigate } from "react-router-dom";
 import { formatUnits } from "ethers/lib/utils";
 import NavBar2 from "./Component/NavBar2";
 import Search from "./Component/Search";
+import NavBar from "./Component/NavBar";
 
 const Home = () => {
   let navigate = useNavigate();
@@ -37,7 +38,8 @@ const Home = () => {
     }
   }, [topTenBlock, yourBlockTxn, transaction, gasPrice, TnxDetails]);
     return(
-      <div className="">        
+      <div className="">
+        <NavBar/>      
         {!isLoading ? (
         <div className="scrollbar-hide grid bg-gray-100 dark:bg-gray-700 grid-cols-1  sm:grid-cols-2 gap-3 p-1 " style={{height: "45rem"}}>
           <div className=" bg-white dark:bg-gray-800 shadow-md  dark:shadow-slate-500 flex flex-col overflow-auto rounded-xl gap-2 p-3 m-2 mt-0">

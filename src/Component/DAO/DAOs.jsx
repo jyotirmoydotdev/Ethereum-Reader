@@ -7,7 +7,7 @@ function DAOs() {
     <div>
         <div className="scrollbar-hide pt-2 grid dark:text-white xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 overflow-auto gap-3"style={{height: "45rem"}}>
             {datas.data.map((el,i)=>(
-             <div className="shadow-sm border border-1 dark:border-gray-600 bg-white  hover:bg-gray-200 dark:hover:bg-gray-700 dark:bg-gray-800  dark:shadow-gray-500 flex flex-row  overflow-auto rounded-xl h-28 gap-2 p-3 m-2 mt-0" key={i+1}>
+             <div className="shadow-sm border border-1 hover:shadow-lg hover:border-white dark:border-gray-600 bg-white  hover:bg-gray-200 dark:hover:bg-gray-700 dark:bg-gray-800  dark:shadow-gray-500 flex flex-row  overflow-auto rounded-xl h-28 gap-2 p-3 m-2 mt-0" key={i+1}>
               <div className="px-2">
               <img src={el.img} className="bg-gray-300 dark:bg-white min-w-[82px] border border-gray-300 shadow-sm rounded-full h-[82px] ">
               </img>

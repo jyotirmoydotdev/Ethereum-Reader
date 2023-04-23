@@ -17,6 +17,7 @@ import Switcher from './Switch.js';
 import ERC from './Component/ERC.jsx';
 import DAO from './Component/DAO.jsx';
 import Account from './Component/Account.jsx';
+import Head from './Component/Head.jsx';
 
 const App = () => {
   const dark="className='dark'";
@@ -25,7 +26,7 @@ return(
   <BrowserRouter>
   <EtherProvider>
     <div className='h-screen bg-gray-100 dark:bg-gray-700'>
-      <NavBar/>
+    <Head/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="erc/*" element={<ERC/>} />
