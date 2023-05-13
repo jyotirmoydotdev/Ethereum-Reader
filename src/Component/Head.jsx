@@ -15,14 +15,14 @@ function Head() {
                 <div className=" shadow-xl  hover:shadow-inner sm:p-1 sm:px-2 px-2 p-1 bg-white dark:bg-gray-800 rounded-full  ">
                   🐋
                 </div>  
-                <div className="flex flex-row sm:flex-row gap-2">
+                <div className="flex flex-col gap-0 sm:flex-row sm:gap-2">
                   <div className=""> ETHEREUM </div>
                   <div className=""> READER </div>
                 </div> 
               </p>
             </Link>
           </div>
-          <div className="hide-on-mobile">
+          <div className="hide-on-mobil">
             <NavBar2/>
           </div>
           {/*//left*/}

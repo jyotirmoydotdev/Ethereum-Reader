@@ -168,5 +168,29 @@ export const DAO_DB = {
       website: "https://www.sperax.io/",
       join: "https://snapshot.org/#/speraxdao.eth/"
   },
+  {
+      name: "Klima DAO",
+      img: "https://cdn.stamp.fyi/space/klimadao.eth?s=160&cb=f2878ab152950fdf",
+      twitter: "https://twitter.com/KlimaDAO",
+      github: "#",
+      website: "https://klimadao.finance/",
+      join: "https://snapshot.org/#/klimadao.eth"
+  },
+  {
+      name: "VitaDAO",
+      img: "https://cdn.stamp.fyi/space/vote.vitadao.eth?s=160&cb=dc329883e122555e",
+      twitter: "https://twitter.com/vita_dao",
+      github: "#",
+      website: "https://vitadao.com/",
+      join: "https://snapshot.org/#/vote.vitadao.eth"
+  },
+  {
+      name: "Galxe",
+      img: "https://cdn.stamp.fyi/space/gal.eth?s=160&cb=6ce09a27ee7130da",
+      twitter: "https://twitter.com/galxe",
+      github: "#",
+      website: "https://gal.org/",
+      join: "https://snapshot.org/#/gal.eth"
+  },
   ]
 }

@@ -140,16 +140,16 @@ const NavBar=()=> {
         <div className=" sm:p-2 p-1  flex flex-col text-black  dark:text-white grow ">
           <Link to="stats">
             <div className="bg-white dark:bg-gray-800 hover:shadow-inner dark:shadow-gray-700 shadow-md p-1 h-full rounded-lg ">
-              <div className="text-sm sm:text-2xl font-bold px-2 ">STATS</div>
-              <div className="p-1 px-2 text-xs sm:text-sm flex flex-row gap-1 overflow-x-auto"><p className='font-medium'>TOTAL SUPPLY :</p> {ConvertToEther(EtherSupply)} ETH</div>
+              <div className="text-sm sm:text-2xl font-bold px-2 ">Last Block</div>
+              <div className="p-1 px-2 text-xs sm:text-sm flex flex-row gap-1 overflow-x-auto"><p className='font-medium'>Block :</p> {currentBlock}</div>
             </div>
           </Link>
         </div>
         <div className=" sm:p-2 p-1  flex flex-col text-black  dark:text-white grow ">
           <Link to="stats">
             <div className="bg-white dark:bg-gray-800 hover:shadow-inner dark:shadow-gray-700 shadow-md p-1 h-full rounded-lg ">
-              <div className="text-sm sm:text-2xl font-bold px-2 ">Last Block</div>
-              <div className="p-1 px-2 text-xs sm:text-sm flex flex-row gap-1 overflow-x-auto"><p className='font-medium'>Block :</p> {currentBlock}</div>
+              <div className="text-sm sm:text-2xl font-bold px-2 ">STATS</div>
+              <div className="p-1 px-2 text-xs sm:text-sm flex flex-row gap-1 overflow-x-auto"><p className='font-medium'>TOTAL SUPPLY :</p> {ConvertToEther(EtherSupply)} ETH</div>
             </div>
           </Link>
         </div>
