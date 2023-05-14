@@ -192,5 +192,29 @@ export const DAO_DB = {
       website: "https://gal.org/",
       join: "https://snapshot.org/#/gal.eth"
   },
+  {
+      name: "Convex Finance",
+      img: "https://cdn.stamp.fyi/space/cvx.eth?s=160&cb=ee88e4dd9fcaca10",
+      twitter: "https://twitter.com/ConvexFinance",
+      github: "#",
+      website: "https://www.convexfinance.com",
+      join: "https://snapshot.org/#/cvx.eth"
+  },
+  {
+      name: "Bankless DAO",
+      img: "https://cdn.stamp.fyi/space/banklessvault.eth?s=160&cb=fa48a461c147ae6d",
+      twitter: "https://twitter.com/banklessDAO",
+      github: "#",
+      website: "https://www.bankless.community",
+      join: "https://snapshot.org/#/banklessvault.eth"
+  },
+  {
+      name: "Krause House",
+      img: "https://cdn.stamp.fyi/space/krausehouse.eth?s=160&cb=2b875a481490a246",
+      twitter: "https://twitter.com/krausehousedao",
+      github: "#",
+      website: "https://www.krausehouse.club",
+      join: "https://snapshot.org/#/krausehouse.eth"
+  },
   ]
 }
