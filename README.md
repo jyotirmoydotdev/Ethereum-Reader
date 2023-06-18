@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# [Ethereum Reader](https://ethereum-reader.web.app)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="1680" alt="Screenshot 2023-06-18 at 11 11 39 PM" src="https://github.com/jyotirmoydotdev/Ethereum-Reader/assets/64324524/e426040c-b985-4ebb-a6a5-bf10b8775d92">
 
-## Available Scripts
+<p align="center">
+  
+  [![](https://img.shields.io/badge/Click_Here-03C75A?style=for-the-badge&logo=tick&logoColor=FFFFFF)](https://ethereum-reader.web.app)
+</p>
 
-In the project directory, you can run:
+# Description
 
-### `npm start`
+This is a personal project that aims to provide a user-friendly website for accessing and analyzing the latest block data and transaction information from the Ethereum mainnet. Additionally, the website features a comprehensive DAO section that includes the latest news, a list of active DAOs, and a variety of useful DAO tools. By providing all of this information in one convenient location, users will be able to stay up-to-date on the latest developments in the world of Ethereum.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The following technologies were used to build this project:
 
-### `npm test`
+- React
+- Infura
+- Ether.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Installation
 
-### `npm run build`
+To run this project locally, please follow the steps below:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository from [GitHub](https://github.com/username/ethereum-reader).
+2. Install the dependencies by running `npm install`.
+3. Start the development server by running `npm start`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once the development server is running, you can access the website by navigating to `http://localhost:3000` on your preferred web browser.
 
-### `npm run eject`
+# Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We welcome contributions from the community. Please feel free to submit any issues or pull requests on our [GitHub repository](https://github.com/username/ethereum-reader).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
